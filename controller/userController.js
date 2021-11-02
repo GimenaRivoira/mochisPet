@@ -1,4 +1,5 @@
 const db = require('../database/models');
+const bcrypt = require('bcrypt')
 
 module.exports = {
     getAll : (req, res) => {
@@ -41,14 +42,14 @@ module.exports = {
         const {email, password} = req.body
         db.Users.create({
             email,
-            password,
+            password : bcrypt.hashSync(password, 10),
         })
         .then(resdb => {
             if (resdb) {
                 return res.status(200).json({
                     status : 200,
                     message : "The user was created succesfully",
-                    user : resdb
+                    user : resdb.email
                 })
             } else {
                 return res.status(400).json({
