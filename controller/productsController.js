@@ -47,16 +47,18 @@ module.exports= {
             category,
         })
         .then(resdb => {
+            if (resdb) {
                 res.status(200).json({
                     status : 200,
-                    message : "Product added succesfully"
+                    message : "Product added succesfully",
+                    product : resdb
                 })
-        })
-        .catch(err => {
-            res.status(400).json({
-                status : 400,
-                message : err
-            })
+            } else {
+                res.status(400).json({
+                    status : 400,
+                    message : "Something fail, try again later",
+                })
+            }
         })
     },
     remove : (req, res) => {
