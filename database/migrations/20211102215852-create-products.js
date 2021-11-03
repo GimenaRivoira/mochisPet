@@ -9,7 +9,8 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull : false,
       },
       sku: {
         type: Sequelize.STRING
@@ -22,6 +23,16 @@ module.exports = {
       },
       category: {
         type: Sequelize.INTEGER
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+        
       },
     });
   },

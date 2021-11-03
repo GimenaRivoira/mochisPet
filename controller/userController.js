@@ -59,6 +59,9 @@ module.exports = {
             }
             
         })
+        .catch(error => {
+            res.json(error)
+        });
     }, 
     edit : (req, res) => {
         db.Users.update({
