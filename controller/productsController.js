@@ -38,13 +38,14 @@ module.exports= {
         })
     },
     create : (req, res) => {
-        const {name, sku, price, description, category} = req.body
+        const {name, sku, price, description, category, image} = req.body
         db.Products.create({
             name,
             sku,
             price,
             description,
             category,
+            image,
         })
         .then(resdb => {
             if (resdb) {
